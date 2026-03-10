@@ -1,0 +1,16 @@
+# Variables de entorno (contiene contraseñas)
+.env
+
+# Binario compilado de Go
+lab4
+
+# Carpeta de caché de Go
+vendor/
+
+# Archivos del sistema
+.DS_Store        # Mac
+Thumbs.db        # Windows
+
+# IDEs
+.vscode/
+.idea/
