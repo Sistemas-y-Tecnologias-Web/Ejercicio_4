@@ -105,7 +105,7 @@ func (h *Handler) update(w http.ResponseWriter, r *http.Request) {
 	id, ok := extractID(r.URL.Path)
 
 	if !ok {
-		writeError(w, http.StatusNotFound, "invalid id")
+		writeError(w, http.StatusBadRequest, "invalid id")
 		return
 	}
 
@@ -117,7 +117,11 @@ func (h *Handler) update(w http.ResponseWriter, r *http.Request) {
 	videogame, err := h.service.Update(r.Context(), id, req)
 
 	if err != nil {
-		writeError(w, http.StatusInternalServerError, "could not update videogame")
+		if errors.Is(err, ErrNotFound) {
+			writeError(w, http.StatusNotFound, err.Error())
+		} else {
+			writeError(w, http.StatusInternalServerError, "could not update videogame")
+		}
 		return
 	}
 
@@ -135,7 +139,7 @@ func (h *Handler) delete(w http.ResponseWriter, r *http.Request) {
 		if errors.Is(err, ErrNotFound) {
 			writeError(w, http.StatusNotFound, err.Error())
 		} else {
-			writeError(w, http.StatusInternalServerError, "could not delete user")
+			writeError(w, http.StatusInternalServerError, "could not delete videogame")
 		}
 		return
 	}
