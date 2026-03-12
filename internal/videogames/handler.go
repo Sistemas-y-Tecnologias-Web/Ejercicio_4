@@ -19,10 +19,22 @@ func NewHandler(service *Service) *Handler {
 func (h *Handler) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/api/videogames", h.router)
 	mux.HandleFunc("/api/videogames/", h.router)
+	mux.HandleFunc("/api", h.router)
 }
 
 func (h *Handler) router(w http.ResponseWriter, r *http.Request) {
 	hasID := strings.Count(r.URL.Path, "/") == 3
+	health := strings.Count(r.URL.Path, "/") == 1
+
+	if health {
+		switch r.Method {
+		case http.MethodGet:
+			h.health(w)
+		default:
+			writeError(w, http.StatusNotFound, "method not allowed!")
+		}
+		return
+	}
 
 	if !hasID {
 		switch r.Method {
@@ -46,6 +58,10 @@ func (h *Handler) router(w http.ResponseWriter, r *http.Request) {
 	default:
 		writeError(w, http.StatusMethodNotAllowed, "method not allowed!")
 	}
+}
+
+func (h *Handler) health(w http.ResponseWriter) {
+	writeJSON(w, http.StatusOK, "I'm alive😁")
 }
 
 func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
