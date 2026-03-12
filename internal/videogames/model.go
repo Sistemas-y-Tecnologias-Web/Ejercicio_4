@@ -1,27 +1,27 @@
 type Videogame struct {
-	id int `json:"id"`
-	name string `json:"name"`
-	category string `json:"category"`
-	active_players int `json:"active_players"`
-	size float `json:"size"`
-	rating int `json:"rating"`
-	downloads int `json:"downloads"`
+	ID int `json:"id"`
+	Name string `json:"name"`
+	Category string `json:"category"`
+	Active_players int `json:"active_players"`
+	Size float `json:"size"`
+	Rating int `json:"rating"`
+	Downloads int `json:"downloads"`
 }
 
 type CreateVideogame struct {
-	name string `json:"name"`
-	category string `json:"category"`
-	active_players int `json:"active_players"`
-	size float `json:"size"`
-	rating int `json:"rating"`
-	downloads int `json:"downloads"`
+	Name string `json:"name"`
+	Category string `json:"category"`
+	Active_players int `json:"active_players"`
+	Size float `json:"size"`
+	Rating int `json:"rating"`
+	Downloads int `json:"downloads"`
 }
 
 type UpdateVideogame struct {
-	name string `json:"name"`
-	category string `json:"category"`
-	active_players int `json:"active_players"`
-	size float `json:"size"`
-	rating int `json:"rating"`
-	downloads int `json:"downloads"`
+	Name string `json:"name"`
+	Category string `json:"category"`
+	Active_players int `json:"active_players"`
+	Size float `json:"size"`
+	Rating int `json:"rating"`
+	Downloads int `json:"downloads"`
 }
