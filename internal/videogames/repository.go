@@ -17,7 +17,7 @@ func NewRepository(db *pgxpool.Pool) *Repository {
 }
 
 func (r *Repository) GetAll(ctx context.Context) ([]Videogame, error) {
-	rows, err := r.db.Query(ctx, "SELECT * FROM Videogames")
+	rows, err := r.db.Query(ctx, "SELECT * FROM videogames")
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (r *Repository) GetAll(ctx context.Context) ([]Videogame, error) {
 
 func (r *Repository) GetByID(ctx context.Context, id int) (Videogame, error) {
 	var v Videogame
-	err := r.db.QueryRow(ctx, "SELECT * FROM Videogames WHERE id = $1", id).Scan(
+	err := r.db.QueryRow(ctx, "SELECT * FROM videogames WHERE id = $1", id).Scan(
 		&v.ID,
 		&v.Name,
 		&v.Category,
@@ -67,7 +67,7 @@ func (r *Repository) Create(ctx context.Context, req CreateVideogame) (Videogame
 	var v Videogame
 	err := r.db.QueryRow(ctx,
 		`
-	INSERT INTO Videogames(name, category, active_players, size, rating, downloads) 
+	INSERT INTO videogames(name, category, active_players, size, rating, downloads) 
 	VALUES ($1, $2, $3, $4, $5, $6)
 	RETURNING id, name, category, active_players, size, rating, downloads`,
 		req.Name,
@@ -90,7 +90,7 @@ func (r *Repository) Create(ctx context.Context, req CreateVideogame) (Videogame
 }
 
 func (r *Repository) Delete(ctx context.Context, id int) error {
-	result, err := r.db.Exec(ctx, "DELETE * FROM Videogames WHERE id = $1", id)
+	result, err := r.db.Exec(ctx, "DELETE FROM videogames WHERE id = $1", id)
 	if err != nil {
 		return err
 	}
@@ -106,7 +106,7 @@ func (r *Repository) Update(ctx context.Context, id int, req UpdateVideogame) (V
 	var v Videogame
 	err := r.db.QueryRow(ctx,
 		`
-	UPDATE Videogames
+	UPDATE videogames
 	SET name = $1, category = $2, active_players = $3, size = $4, rating = $5, downloads = $6
 	WHERE id = $7
 	RETURNING id, name, category, active_players, size, rating, downloads
