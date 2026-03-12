@@ -34,3 +34,5 @@ INSERT INTO videogames (id, name, category, active_players, size, rating, downlo
 (23, 'Genshin Impact', 'RPG', 1000000, 35.0, 9, 60000000),
 (24, 'Rocket League', 'Sports', 300000, 20.0, 8, 75000000),
 (25, 'Fall Guys', 'Party', 220000, 15.0, 8, 50000000);
+
+SELECT setval('videogames_id_seq', (SELECT MAX(id) FROM videogames));
