@@ -27,3 +27,19 @@ type UpdateVideogame struct {
 	Rating        int     `json:"rating"`
 	Downloads     int     `json:"downloads"`
 }
+
+func (r CreateVideogame) Validate() error {
+	if r.Name == "" {
+		return ErrNameRequired
+	}
+
+	if r.Category == "" {
+		return ErrCategoryRequired
+	}
+
+	if r.Size == 0 {
+		return ErrSizeRequired
+	}
+
+	return nil
+}
