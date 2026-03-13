@@ -169,8 +169,8 @@ curl http://localhost:24484/api/videogames/1
   "downloads": 400000000
 }
 
-![alt text](screenshots/image2.png)
 ```
+![alt text](screenshots/image2.png)
 
 **404 Not Found:**
 ```json
@@ -178,8 +178,8 @@ curl http://localhost:24484/api/videogames/1
   "error": "videogame not found"
 }
 
-![alt text](screenshots/image4.png)
 ```
+![alt text](screenshots/image4.png)
 
 **400 Bad Request (invalid ID):**
 ```json
@@ -187,8 +187,9 @@ curl http://localhost:24484/api/videogames/1
   "error": "invalid id"
 }
 
-![alt text](screenshots/image5.png)
 ```
+
+![alt text](screenshots/image5.png)
 
 ---
 
@@ -232,16 +233,18 @@ curl -X POST http://localhost:24484/api/videogames \
   "downloads": 20000000
 }
 
-![alt text](screenshots/image6.png)
 ```
+![alt text](screenshots/image6.png)
 
 **400 Bad Request (missing required fields):**
 ```json
 {
   "error": "name is required"
 }
-![alt text](screenshots/image7.png)
+
 ```
+
+![alt text](screenshots/image7.png)
 
 ---
 
@@ -285,8 +288,9 @@ curl -X PUT http://localhost:24484/api/videogames/2 \
   "downloads": 238000000
 }
 
-![alt text](screenshots/image8.png)
 ```
+
+![alt text](screenshots/image8.png)
 
 **404 Not Found:**
 ```json
@@ -294,8 +298,10 @@ curl -X PUT http://localhost:24484/api/videogames/2 \
   "error": "videogame not found"
 }
 
-![alt text](screenshots/image9.png)
+
 ```
+
+![alt text](screenshots/image9.png)
 
 ---
 
@@ -313,8 +319,10 @@ curl -X DELETE http://localhost:24484/api/videogames/1
   "message": "videogame deleted"
 }
 
-![alt text](screenshots/image10.png)
+
 ```
+
+![alt text](screenshots/image10.png)
 
 **404 Not Found:**
 ```json
@@ -322,8 +330,10 @@ curl -X DELETE http://localhost:24484/api/videogames/1
   "error": "videogame not found"
 }
 
-![alt text](screenshots/image11.png)
+
 ```
+
+![alt text](screenshots/image11.png)
 
 ---
 
