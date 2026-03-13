@@ -90,15 +90,15 @@ Base URL: `http://localhost:24484`
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| GET | `/api/ping` | Check if the server is running |
+| GET | `/api` | Check if the server is running |
 
 **Response:**
 ```json
 {
-  "message": "pong"
+  "message": "I'm Alive 😁"
 }
 ```
-
+![alt text](screenshots/image.png)
 ---
 
 ### Videogames
@@ -146,7 +146,7 @@ curl http://localhost:24484/api/videogames
   }
 ]
 ```
-
+![alt text](screenshots/image1.png)
 ---
 
 ### GET /api/videogames/{id}
@@ -168,6 +168,8 @@ curl http://localhost:24484/api/videogames/1
   "rating": 9,
   "downloads": 400000000
 }
+
+![alt text](screenshots/image2.png)
 ```
 
 **404 Not Found:**
@@ -175,6 +177,8 @@ curl http://localhost:24484/api/videogames/1
 {
   "error": "videogame not found"
 }
+
+![alt text](screenshots/image4.png)
 ```
 
 **400 Bad Request (invalid ID):**
@@ -182,6 +186,8 @@ curl http://localhost:24484/api/videogames/1
 {
   "error": "invalid id"
 }
+
+![alt text](screenshots/image5.png)
 ```
 
 ---
@@ -225,6 +231,8 @@ curl -X POST http://localhost:24484/api/videogames \
   "rating": 10,
   "downloads": 20000000
 }
+
+![alt text](screenshots/image6.png)
 ```
 
 **400 Bad Request (missing required fields):**
@@ -232,6 +240,7 @@ curl -X POST http://localhost:24484/api/videogames \
 {
   "error": "name is required"
 }
+![alt text](screenshots/image7.png)
 ```
 
 ---
@@ -241,16 +250,16 @@ curl -X POST http://localhost:24484/api/videogames \
 Fully update a videogame. You must send **all fields**.
 
 ```bash
-curl -X PUT http://localhost:24484/api/videogames/1 \
+curl -X PUT http://localhost:24484/api/videogames/2 \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Fortnite Chapter 5",
-    "category": "Battle Royale",
-    "active_players": 6000000,
-    "size": 35.0,
-    "rating": 9,
-    "downloads": 450000000
-  }'
+        "name": "Minecraft Java Edition",
+        "category": "Sandbox",
+        "active_players": 3000000,
+        "size": 1.2,
+        "rating": 10,
+        "downloads": 238000000
+    }'
 ```
 
 **Request body:**
@@ -267,14 +276,16 @@ curl -X PUT http://localhost:24484/api/videogames/1 \
 **Success — 200 OK:**
 ```json
 {
-  "id": 1,
-  "name": "Fortnite Chapter 5",
-  "category": "Battle Royale",
-  "active_players": 6000000,
-  "size": 35.0,
-  "rating": 9,
-  "downloads": 450000000
+  "id": 2,
+  "name": "Minecraft Java Edition",
+  "category": "Sandbox",
+  "active_players": 3000000,
+  "size": 1.2,
+  "rating": 10,
+  "downloads": 238000000
 }
+
+![alt text](screenshots/image8.png)
 ```
 
 **404 Not Found:**
@@ -282,6 +293,8 @@ curl -X PUT http://localhost:24484/api/videogames/1 \
 {
   "error": "videogame not found"
 }
+
+![alt text](screenshots/image9.png)
 ```
 
 ---
@@ -299,6 +312,8 @@ curl -X DELETE http://localhost:24484/api/videogames/1
 {
   "message": "videogame deleted"
 }
+
+![alt text](screenshots/image10.png)
 ```
 
 **404 Not Found:**
@@ -306,6 +321,8 @@ curl -X DELETE http://localhost:24484/api/videogames/1
 {
   "error": "videogame not found"
 }
+
+![alt text](screenshots/image11.png)
 ```
 
 ---

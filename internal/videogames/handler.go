@@ -61,7 +61,7 @@ func (h *Handler) router(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) health(w http.ResponseWriter) {
-	writeJSON(w, http.StatusOK, "I'm alive😁")
+	writeJSON(w, http.StatusOK, map[string]string{"message": "I'm Alive 😁"})
 }
 
 func (h *Handler) list(w http.ResponseWriter, r *http.Request) {
