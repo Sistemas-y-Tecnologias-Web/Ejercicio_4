@@ -98,7 +98,7 @@ Base URL: `http://localhost:24484`
   "message": "I'm Alive 😁"
 }
 ```
-![alt text](screenshots/image.png)
+![alt text](screenshots/alive.png)
 ---
 
 ### Videogames
