@@ -82,6 +82,36 @@ go run .
 
 ---
 
+## 🌐 Test it Now
+
+The API is live at `http://35.232.139.23/jonathan/Lab_4`. You can test it right now without running anything locally:
+
+```bash
+# Ping
+curl http://35.232.139.23/jonathan/Lab_4/api
+
+# List all videogames
+curl http://35.232.139.23/jonathan/Lab_4/api/videogames
+
+# Get one videogame
+curl http://35.232.139.23/jonathan/Lab_4/api/videogames/1
+
+# Create a videogame
+curl -X POST http://35.232.139.23/jonathan/Lab_4/api/videogames \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Zelda","category":"Adventure","active_players":800000,"size":16.3,"rating":10,"downloads":20000000}'
+
+# Update a videogame
+curl -X PUT http://35.232.139.23/jonathan/Lab_4/api/videogames/2 \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Minecraft Java Edition","category":"Sandbox","active_players":3000000,"size":1.2,"rating":10,"downloads":238000000}'
+
+# Delete a videogame
+curl -X DELETE http://35.232.139.23/jonathan/Lab_4/api/videogames/1
+```
+
+---
+
 ## 📡 Endpoints
 
 Base URL: `http://localhost:24484`
@@ -120,7 +150,11 @@ Base URL: `http://localhost:24484`
 List all videogames.
 
 ```bash
+# Local
 curl http://localhost:24484/api/videogames
+
+# Test it now
+curl http://35.232.139.23/jonathan/Lab_4/api/videogames
 ```
 
 **Success — 200 OK:**
@@ -154,7 +188,11 @@ curl http://localhost:24484/api/videogames
 Get a videogame by its ID.
 
 ```bash
+# Local
 curl http://localhost:24484/api/videogames/1
+
+# Test it now
+curl http://35.232.139.23/jonathan/Lab_4/api/videogames/1
 ```
 
 **Success — 200 OK:**
@@ -198,7 +236,20 @@ curl http://localhost:24484/api/videogames/1
 Create a new videogame.
 
 ```bash
+# Local
 curl -X POST http://localhost:24484/api/videogames \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Zelda Tears of the Kingdom",
+    "category": "Adventure",
+    "active_players": 800000,
+    "size": 16.3,
+    "rating": 10,
+    "downloads": 20000000
+  }'
+
+# Test it now
+curl -X POST http://35.232.139.23/jonathan/Lab_4/api/videogames \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Zelda Tears of the Kingdom",
@@ -253,7 +304,20 @@ curl -X POST http://localhost:24484/api/videogames \
 Fully update a videogame. You must send **all fields**.
 
 ```bash
+# Local
 curl -X PUT http://localhost:24484/api/videogames/2 \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "Minecraft Java Edition",
+        "category": "Sandbox",
+        "active_players": 3000000,
+        "size": 1.2,
+        "rating": 10,
+        "downloads": 238000000
+    }'
+
+# Test it now
+curl -X PUT http://35.232.139.23/jonathan/Lab_4/api/videogames/2 \
   -H "Content-Type: application/json" \
   -d '{
         "name": "Minecraft Java Edition",
@@ -310,7 +374,11 @@ curl -X PUT http://localhost:24484/api/videogames/2 \
 Delete a videogame by its ID.
 
 ```bash
+# Local
 curl -X DELETE http://localhost:24484/api/videogames/1
+
+# Test it now
+curl -X DELETE http://35.232.139.23/jonathan/Lab_4/api/videogames/1
 ```
 
 **Success — 200 OK:**
