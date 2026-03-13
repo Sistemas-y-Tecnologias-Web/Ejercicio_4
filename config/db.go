@@ -7,11 +7,16 @@ import (
 	"os"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/joho/godotenv"
 )
 
 func NewDB() *pgxpool.Pool {
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found, using system env vars")
+	}
+
 	url := fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s",
+		"postgres://%s:%s@%s:%s/%s?sslmode=require",
 		getEnv("DB_USER", "postgres"),
 		getEnv("DB_PASS", "postgres"),
 		getEnv("DB_HOST", "localhost"),
